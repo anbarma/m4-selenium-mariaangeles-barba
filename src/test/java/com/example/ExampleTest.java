@@ -35,13 +35,13 @@ public class ExampleTest {
         String title = driver.getTitle();
         assertEquals("Introducción a Selenium: Cómo funciona, Características y Opciones",title);
     }
-@Disabled
+
     @Test
     void test2(){
-        driver.get("PÁGINA WEB");
+        driver.get("https://github.com/anbarma/m4-selenium-mariaangeles-barba");
 
         String title = driver.getTitle();
-        assertEquals("Herramientas de testing: introducción a Selenium",title);
+        assertEquals("GitHub - anbarma/m4-selenium-mariaangeles-barba",title);
     }
 
 }
