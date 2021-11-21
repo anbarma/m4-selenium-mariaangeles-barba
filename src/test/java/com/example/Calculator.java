@@ -107,7 +107,7 @@ public class Calculator {
         sleep();
 
         boolean inputDisplayed = input.isDisplayed();
-        assertEquals(true, inputDisplayed);
+        assertTrue(inputDisplayed);
     }
 
     @Test
@@ -142,6 +142,30 @@ public class Calculator {
         check = driver.findElement(By.name("intSelection"));
         String inputValue = check.getAttribute("checked");
         assertEquals("true", inputValue);
+    }
+
+    @Test
+    void CheckBoxIntegerOnlyCalculateTestOK(){
+        driver.get(URL_CALCULADORA);
+
+        WebElement check = driver.findElement(By.id("integerSelect"));
+        check.click();
+        sleep();
+
+        WebElement input1 = driver.findElement(By.xpath("//*[@id=\"number1Field\"]"));
+        input1.sendKeys("3.5");
+        sleep();
+        WebElement input2 = driver.findElement(By.xpath("//*[@id=\"number2Field\"]"));
+        input2.sendKeys("2.2");
+        sleep();
+
+        WebElement calculateButton = driver.findElement(By.xpath("//*[@id=\"calculateButton\"]"));
+        calculateButton.click();
+        sleep();
+
+        WebElement output = driver.findElement(By.name("numberAnswer"));
+        String inputValue = output.getAttribute("value");
+        assertEquals("5", inputValue);
     }
 
 
