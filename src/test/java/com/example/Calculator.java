@@ -10,8 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class Calculator {
     private static final String URL_CALCULADORA = "https://testsheepnz.github.io/BasicCalculator.html";
@@ -132,7 +131,7 @@ public class Calculator {
     }
 
     @Test
-    void CheckBoxIntegerOnlyTest(){
+    void CheckBoxIntegerOnlyTestSelect(){
         driver.get(URL_CALCULADORA);
 
         WebElement check = driver.findElement(By.id("integerSelect"));
@@ -166,6 +165,27 @@ public class Calculator {
         WebElement output = driver.findElement(By.name("numberAnswer"));
         String inputValue = output.getAttribute("value");
         assertEquals("5", inputValue);
+    }
+
+    @Test
+    void CheckBoxIntegerOnlyDeselect(){
+        driver.get(URL_CALCULADORA);
+
+        WebElement check = driver.findElement(By.id("integerSelect"));
+        check.click();
+        sleep();
+
+        check = driver.findElement(By.name("intSelection"));
+        String inputValue = check.getAttribute("checked");
+        assertEquals("true", inputValue);
+
+        check = driver.findElement(By.id("integerSelect"));
+        check.click();
+        sleep();
+
+        check = driver.findElement(By.name("intSelection"));
+        inputValue = check.getAttribute("checked");
+        assertNull(inputValue);
     }
 
 
