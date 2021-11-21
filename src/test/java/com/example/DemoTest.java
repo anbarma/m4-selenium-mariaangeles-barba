@@ -49,8 +49,8 @@ public class DemoTest {
         WebElement input = driver.findElement(By.xpath("//*[@id=\"fname\"]"));
         input.sendKeys("Texto desde Selenium");
         sleep();
-
-        //input = driver.findElement(By.xpath("//*[@id=\"fname\"]"));
+        //Se queda abierto el Chrome a veces con la página por eso he cambiado de web a testear
+        input = driver.findElement(By.xpath("//*[@id=\"fname\"]"));
         String inputValue = input.getAttribute("value");
         assertEquals("Texto desde Selenium", inputValue);
     }
