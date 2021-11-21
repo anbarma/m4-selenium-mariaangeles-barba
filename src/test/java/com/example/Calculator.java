@@ -69,7 +69,7 @@ public class Calculator {
     }
 
     @Test
-    void calculateButtonTestOK(){
+    void calculateButtonAddTestOK(){
         driver.get(URL_CALCULADORA);
 
         WebElement input1 = driver.findElement(By.xpath("//*[@id=\"number1Field\"]"));
@@ -114,7 +114,7 @@ public class Calculator {
         driver.get(URL_CALCULADORA);
 
         WebElement input = driver.findElement(By.xpath("//*[@id=\"number2Field\"]"));
-        input.sendKeys("adiós");
+        input.sendKeys("hola");
         sleep();
 
         WebElement calculateButton = driver.findElement(By.xpath("//*[@id=\"calculateButton\"]"));
