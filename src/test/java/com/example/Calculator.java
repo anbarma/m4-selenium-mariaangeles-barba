@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Calculator {
     private static final String URL_CALCULADORA = "https://testsheepnz.github.io/BasicCalculator.html";
@@ -107,6 +108,27 @@ public class Calculator {
 
         boolean inputDisplayed = input.isDisplayed();
         assertEquals(true, inputDisplayed);
+    }
+
+    @Test
+    void TextBoxInputSecondNumberTestIsNotaNumber(){
+        driver.get(URL_CALCULADORA);
+
+        WebElement input = driver.findElement(By.xpath("//*[@id=\"number2Field\"]"));
+        input.sendKeys("adiós");
+        sleep();
+
+        WebElement calculateButton = driver.findElement(By.xpath("//*[@id=\"calculateButton\"]"));
+        assertEquals("btn btn-primary", calculateButton.getAttribute("class"));
+        calculateButton.click();
+
+        input = driver.findElement(By.id("errorMsgField"));
+        String inputValue = input.getText();
+        assertEquals("Number 2 is not a number", inputValue);
+        sleep();
+
+        boolean inputDisplayed = input.isDisplayed();
+        assertTrue(inputDisplayed);
     }
 
 
