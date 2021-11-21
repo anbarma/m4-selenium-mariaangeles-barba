@@ -87,7 +87,7 @@ public class Calculator {
         assertEquals("5", inputValue);
 
     }
-    @Disabled
+
     @Test
     void TextBoxInputFirstNumberTestIsNotaNumber(){
         driver.get(URL_CALCULADORA);
@@ -96,10 +96,19 @@ public class Calculator {
         input.sendKeys("hola");
         sleep();
 
+        WebElement calculateButton = driver.findElement(By.xpath("//*[@id=\"calculateButton\"]"));
+        assertEquals("btn btn-primary", calculateButton.getAttribute("class"));
+        calculateButton.click();
+
         input = driver.findElement(By.id("errorMsgField"));
-        String inputValue = input.getAttribute("value");
-        assertEquals("null", inputValue);
+        String inputValue = input.getText();
+        assertEquals("Number 1 is not a number", inputValue);
+        sleep();
+
+        boolean inputDisplayed = input.isDisplayed();
+        assertEquals(true, inputDisplayed);
     }
+
 
     private void sleep() {
         try {
