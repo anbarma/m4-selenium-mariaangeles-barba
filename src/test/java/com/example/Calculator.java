@@ -131,6 +131,19 @@ public class Calculator {
         assertTrue(inputDisplayed);
     }
 
+    @Test
+    void CheckBoxIntegerOnlyTest(){
+        driver.get(URL_CALCULADORA);
+
+        WebElement check = driver.findElement(By.id("integerSelect"));
+        check.click();
+        sleep();
+
+        check = driver.findElement(By.name("intSelection"));
+        String inputValue = check.getAttribute("checked");
+        assertEquals("true", inputValue);
+    }
+
 
     private void sleep() {
         try {
